@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: #f5f6fa;
+  --dark-blue: #1c2541;
+  --light-blue: #3a506b;
+  --green-soft: #5bc0be;
+  --white: #ffffff;
+  --red-soft: #ee4266;
+  --yellow: #fbf336;
+}
+
+html {
+  background: var(--main-bg-color);
+  font-family: "Roboto", sans-serif;
+  /* this sets 1rem = 10px */
+  font-size: 62.5%;
+}
+
+nav {
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 2em;
+}
+
+.logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.logo h1 {
+  padding-left: 0.5em;
+}
