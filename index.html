@@ -28,7 +28,7 @@
         <h1>Stock List</h1>
       </div>
       <div class="data">
-        <table>
+        <table class="table-data">
           <thead>
             <tr class="column-header">
               <!-- leave empty for "ownership" coloum -->
@@ -49,7 +49,7 @@
               </td>
               <td>MSFT</td>
               <td>Microsoft</td>
-              <td>I like their cloud offerings. Lorem ipsum dolor sit.</td>
+              <td>I like their cloud offerings.</td>
               <td>9/29/2020</td>
               <td>$205.23</td>
             </tr>
@@ -82,40 +82,35 @@
     <section class="main-table second">
     <div class="add-stock">
       <div class="add-popup">
-        <form onsubmit="">
-          <label for="stick">Stock Ticker</label><br />
-          <input type="text" id="stick" name="stick" maxlength="5" /><br /><br />
-
-          <label for="comment">Comment</label><br />
-          <textarea
-            id="comment"
-            name="comment"
-            class="textarea resize-ta"
-            maxlength="100"
-          ></textarea></br><br />
-
-          <label for="sentiment">Sentiment</label><br />
-          <input type="radio" id="bull" name="sentiment" value="bull" />
-          <label for="bull">Bull</label><br />
-          <input type="radio" id="bear" name="sentiment" value="bear" />
-          <label for="bear">Bear</label><br />
-          <input type="radio" id="neutral" name="sentiment" value="neutral" />
-          <label for="neutral">Neutral</label><br /><br />
-
-          <label for="ownership">Do you own the stock?</label><br />
-          <input type="radio" id="yes" name="ownership" value="yes" />
-          <label for="yes">Yes</label><br />
-          <input type="radio" id="no" name="ownership" value="no" />
-          <label for="no">No</label><br />
-
+        <div class="form">
+          <h2>Ticker</h2>
+          <input type="text" id="stick" maxlength="5">
+          <h2>Comment</h2>
+          <input type="text" id="comment" maxlength="280">
+          <!-- sentiment -->
+          <h2>Sentiment</h2>
+          <input type="radio" name="sentiment" id="bull" value="bull" class="sentiment-radio">
+          <label for="bull">Bull</label>
+          <input type="radio" name="sentiment" id="bear" value="bear" class="sentiment-radio"> 
+          <label for="bear">Bear</label>
+          <input type="radio" name="sentiment" id="neutral" value="neutral" class="sentiment-radio">
+          <label for="neutral">Neutral</label>
+          <!-- ownership -->
+          <h2>Ownership</h2>
+          <input type="radio" id="yes" name="ownership" value="yes" class="ownerform"/>
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="ownership" value="no" class="ownerform"/>
+          <label for="no">No</label>
+        </div>
           <div class="center-stock">
-            <input type="submit" value="Add" class="stock-button"/>
+            <!-- might need tot change this to button and not submit -->
+            <button class="stock-button">Add</button>
+            <!-- <input type="submit" value="Add" class="stock-button"/> -->
           </div>
-          
-        </form>
       </div>
     </section>
 
     </div>
   </body>
+  <script src="app.js"></script>
 </html>
