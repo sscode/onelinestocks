@@ -9,9 +9,11 @@
   --dark-blue: #1c2541;
   --light-blue: #3a506b;
   --green-soft: #5bc0be;
+  --green: #29cb97;
   --white: #ffffff;
   --red-soft: #ee4266;
   --yellow: #fbf336;
+  --grey-line: #ebedf4;
 }
 
 html {
@@ -36,4 +38,58 @@ nav {
 
 .logo h1 {
   padding-left: 0.5em;
+}
+
+.main-table {
+  padding: 5rem;
+  max-width: 80%;
+
+  margin: 10rem auto;
+
+  background: var(--white);
+}
+
+.table-header {
+  border-bottom: 0.1rem solid var(--grey-line);
+  width: 100%;
+}
+
+.table-header h1 {
+  font-size: 3rem;
+  padding-bottom: 1em;
+}
+
+.data {
+  border: 1rem solid #1c2541;
+}
+
+th,
+td {
+  /* Need to get text to top of row */
+  text-align: left;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.sentiment {
+  padding: 1.5rem;
+  min-width: 100%;
+
+  border: 0.1rem solid #1c2541;
+  border-radius: 1rem;
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.bull {
+  background: var(--green);
+}
+
+.bear {
+  background: var(--red-soft);
+}
+
+.neutral {
+  background: var(--yellow);
 }
