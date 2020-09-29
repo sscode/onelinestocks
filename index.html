@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>One Line Stocks</title>
   </head>
   <body>
@@ -21,58 +31,91 @@
         <table>
           <thead>
             <tr class="column-header">
+              <!-- leave empty for "ownership" coloum -->
+              <th></th>
               <th>Sentiment</th>
               <th>Ticker</th>
               <th>Stock</th>
               <th>Comment</th>
-              <th>Own</th>
-              <th>Time</th>
-              <th></th>
+              <th>Date</th>
+              <th>Pricestamp</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td><i class="fas fa-certificate"></i></td>
               <td>
                 <button class="sentiment bull">Bull</button>
               </td>
               <td>MSFT</td>
               <td>Microsoft</td>
               <td>I like their cloud offerings. Lorem ipsum dolor sit.</td>
-              <td>Yes</td>
               <td>9/29/2020</td>
-              <td>
-                <button class="delete"></button>
-              </td>
+              <td>$205.23</td>
             </tr>
             <tr>
+              <td><i></i></td>
               <td>
                 <button class="sentiment bear">Bear</button>
               </td>
               <td>GME</td>
               <td>GameStop</td>
               <td>Retail company only</td>
-              <td>No</td>
               <td>9/29/2020</td>
-              <td>
-                <button class="delete"></button>
-              </td>
+              <td>$10.13</td>
             </tr>
             <tr>
+              <td><i></i></td>
               <td>
                 <button class="sentiment neutral">Neutral</button>
               </td>
               <td>SQ</td>
               <td>Square</td>
               <td>Like it but not sure.</td>
-              <td>No</td>
               <td>9/29/2020</td>
-              <td>
-                <button class="delete"></button>
-              </td>
+              <td>$80.23</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
+    <section class="main-table second">
+    <div class="add-stock">
+      <div class="add-popup">
+        <form onsubmit="">
+          <label for="stick">Stock Ticker</label><br />
+          <input type="text" id="stick" name="stick" maxlength="5" /><br /><br />
+
+          <label for="comment">Comment</label><br />
+          <textarea
+            id="comment"
+            name="comment"
+            class="textarea resize-ta"
+            maxlength="100"
+          ></textarea></br><br />
+
+          <label for="sentiment">Sentiment</label><br />
+          <input type="radio" id="bull" name="sentiment" value="bull" />
+          <label for="bull">Bull</label><br />
+          <input type="radio" id="bear" name="sentiment" value="bear" />
+          <label for="bear">Bear</label><br />
+          <input type="radio" id="neutral" name="sentiment" value="neutral" />
+          <label for="neutral">Neutral</label><br /><br />
+
+          <label for="ownership">Do you own the stock?</label><br />
+          <input type="radio" id="yes" name="ownership" value="yes" />
+          <label for="yes">Yes</label><br />
+          <input type="radio" id="no" name="ownership" value="no" />
+          <label for="no">No</label><br />
+
+          <div class="center-stock">
+            <input type="submit" value="Add" class="stock-button"/>
+          </div>
+          
+        </form>
+      </div>
+    </section>
+
+    </div>
   </body>
 </html>

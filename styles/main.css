@@ -13,7 +13,7 @@
   --white: #ffffff;
   --red-soft: #ee4266;
   --yellow: #fbf336;
-  --grey-line: #ebedf4;
+  --grey-line: #ebedf493;
 }
 
 html {
@@ -40,17 +40,20 @@ nav {
   padding-left: 0.5em;
 }
 
+/* tables */
+
 .main-table {
   padding: 5rem;
   max-width: 80%;
-
-  margin: 10rem auto;
+  margin-top: 10rem;
+  margin-left: 10%;
+  margin-right: 10%;
 
   background: var(--white);
+  box-shadow: 0px 1px 4px #e5e9f2;
 }
 
 .table-header {
-  border-bottom: 0.1rem solid var(--grey-line);
   width: 100%;
 }
 
@@ -60,22 +63,31 @@ nav {
 }
 
 .data {
-  border: 1rem solid #1c2541;
+  /* border: 1rem solid #1c2541; */
 }
 
 th,
 td {
   /* Need to get text to top of row */
+  border-bottom: 0.1rem solid var(--grey-line);
   text-align: left;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1rem;
+}
+
+th {
+  font-size: 2rem;
+}
+
+tr {
+  vertical-align: top;
 }
 
 .sentiment {
   padding: 1.5rem;
   min-width: 100%;
 
-  border: 0.1rem solid #1c2541;
+  border: none;
   border-radius: 1rem;
   text-align: center;
 
@@ -92,4 +104,57 @@ td {
 
 .neutral {
   background: var(--yellow);
+}
+
+td .fa-certificate {
+  font-size: 1.5rem;
+  text-align: right;
+  padding-left: 2rem;
+  color: var(--light-blue);
+}
+
+/* add container */
+.second {
+  background: none;
+  margin-top: 0;
+  box-shadow: none;
+}
+
+form {
+  background: var(--white);
+  box-shadow: 0px 1px 4px #e5e9f2;
+  /* border: 1rem solid #1c2541; */
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+input[type="text"] {
+  padding: 1rem;
+}
+.add-stock {
+  /* padding: rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-stock {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stock-button {
+  background: var(--light-blue);
+  color: var(--white);
+  padding: 2rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.stock-button:hover {
+  background: var(--dark-blue);
+  /* font-size: 2rem; */
 }
