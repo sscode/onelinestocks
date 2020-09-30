@@ -96,6 +96,7 @@ tr {
 
 .bear {
   background: var(--red-soft);
+  text-transform: capitalize;
 }
 
 .neutral {
