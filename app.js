@@ -51,7 +51,7 @@ tableBtn.addEventListener("click", () => {
     </tr>
   `;
     table.innerHTML += template;
-  }, 2000);
+  }, 1000);
 });
 
 // ----------------------------------------------------------------------- functions ------------------------------------------>>>>
@@ -70,31 +70,22 @@ function radioCheck(myForm) {
 
 // get stock price
 function fetchPrice(stock, callback) {
-  let total = fetch(`https://cloud.iexapis.com/v1/stock/${stock}/price?token=`)
+  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/price?token=`)
     .then((response) => {
       var resp = response.json();
       return resp;
     })
-    .then(function (data) {
-      priceStamp = data;
-      callback(priceStamp);
-    });
+    .then((data) => callback(data));
 }
 
 // get company name price
 function fetchName(stock, callback) {
-  let total = fetch(
-    `https://cloud.iexapis.com/v1/stock/${stock}/company?token=`
-  )
+  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/company?token=`)
     .then((response) => {
       var resp = response.json();
       return resp;
     })
-    .then(function (data) {
-      priceStamp = data;
-      console.log(priceStamp);
-      callback(priceStamp);
-    });
+    .then((data) => callback(data));
 }
 
 //capitilize first letter
