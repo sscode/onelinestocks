@@ -1,3 +1,8 @@
+// api
+const myKey = config.api;
+
+//variable declartions
+
 const table = document.querySelector(".table-data");
 const tableBtn = document.querySelector(".stock-button");
 
@@ -86,7 +91,7 @@ function clearRadio(myForm) {
 
 // get stock price
 function fetchPrice(stock, callback) {
-  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/price?token=`)
+  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/price?token=${myKey}`)
     .then((response) => {
       var resp = response.json();
       return resp;
@@ -96,7 +101,7 @@ function fetchPrice(stock, callback) {
 
 // get company name price
 function fetchName(stock, callback) {
-  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/company?token=`)
+  fetch(`https://cloud.iexapis.com/v1/stock/${stock}/company?token=${myKey}`)
     .then((response) => {
       var resp = response.json();
       return resp;
