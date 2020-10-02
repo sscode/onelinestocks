@@ -52,6 +52,12 @@ tableBtn.addEventListener("click", () => {
   `;
     table.innerHTML += template;
   }, 1000);
+
+  //clear inpurt
+  stockInput.value = "";
+  clearRadio(ownerInput);
+  clearRadio(sentimentInput);
+  commentInput.value = "";
 });
 
 // ----------------------------------------------------------------------- functions ------------------------------------------>>>>
@@ -66,6 +72,16 @@ function radioCheck(myForm) {
     }
   }
   return radio_value;
+}
+
+//clear radio
+function clearRadio(myForm) {
+  for (let i = 0; i < myForm.length; i++) {
+    if (myForm[i].checked) {
+      myForm[i].checked = false;
+      break;
+    }
+  }
 }
 
 // get stock price
