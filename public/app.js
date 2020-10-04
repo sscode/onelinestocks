@@ -1,6 +1,72 @@
 // api
 const myKey = config.api;
 
+//firebase
+
+const auth = firebase.auth();
+const signIn = document.getElementById("sign-in");
+const signOut = document.getElementById("sign-out");
+
+const whenSignedIn = document.getElementById("whenSignedIn");
+const whenSignedOut = document.getElementById("whenSignedOut");
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+signIn.onclick = () => auth.signInWithPopup(provider);
+
+signOut.onclick = () => auth.signOut();
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // signed in
+    whenSignedIn.hidden = false;
+    whenSignedOut.hidden = true;
+    // not signed in
+    whenSignedIn.hidden = true;
+    whenSignedOut.hidden = false;
+  }
+});
+
+//firestore
+const db = firebase.firestore();
+const dbItems = document.querySelector(".myList");
+const createThing = document.getElementById("createThing");
+
+let dbRef;
+let unsubscribe;
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    dbRef = db.collection("entries");
+
+    createThing.onclick = () => {
+      //fb timestampe
+      const { serverTimestamp } = firebase.firestore.FieldValue;
+
+      console.log(user);
+
+      dbRef.add({
+        uid: user.uid,
+        ticker: "MSFT",
+        createdAt: serverTimestamp(),
+      });
+    };
+
+    // stop livestreaming data
+    unsubscribe = dbRef
+      .where("uid", "==", user.uid)
+      .orderBy("createdAt")
+      .onSnapshot((querySnapshot) => {
+        const items = querySnapshot.docs.map((doc) => {
+          return `<li>${doc.data().ticker}</li>`;
+        });
+        dbItems.innerHTML = items.join("");
+      });
+  } else {
+    unsubscribe && unsubscribe();
+  }
+});
+
 //variable declartions
 
 const table = document.querySelector(".table-data");
