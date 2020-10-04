@@ -11,4 +11,4 @@ From there, we will get the current price of the stock and add it to a firebase 
 
 ---
 
-You can contact me on twitter at [](https://twitter.com/stusim)
+You can contact me on twitter at [@stusim](https://twitter.com/stusim)
