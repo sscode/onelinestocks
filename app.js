@@ -6,15 +6,45 @@ const myKey = config.api;
 const table = document.querySelector(".table-data");
 const tableBtn = document.querySelector(".stock-button");
 
-const ownerInput = document.querySelectorAll(".ownerform");
+const ownership = document.querySelector(".ownership");
+const ownerYes = document.querySelector(".yes");
+const ownerNo = document.querySelector(".no");
+const bear = document.querySelector(".bearBtn");
 const sentimentInput = document.querySelectorAll(".sentiment-radio");
 const stockInput = document.querySelector("#stick");
 const commentInput = document.querySelector("#comment");
 
-// ----------------------------------------------------------------------- add stock to table ------------------------------------------>>>>
+//set ownership -- I'm sure this could be consolidated
+ownerYes.addEventListener("click", () => {
+  ownerYes.children[1].classList.add("checked");
+  ownerNo.children[1].classList.remove("checked");
+});
+ownerNo.addEventListener("click", () => {
+  ownerNo.children[1].classList.add("checked");
+  ownerYes.children[1].classList.remove("checked");
+});
 
+let ownerChoice = Array.from(ownership.children);
+ownerChoice.forEach((choice) => {
+  console.log(choice);
+});
+
+ownership.addEventListener("click", function (event) {
+  console.log(event.target);
+});
+
+bear.addEventListener("click", () => {
+  console.log(bear);
+  bear.classList.add("checked");
+});
+
+// ----------------------------------------------------------------------- add stock to table ------------------------------------------>>>>
 tableBtn.addEventListener("click", () => {
-  let owner = radioCheck(ownerInput);
+  tableBtn.innerHTML = "Loading";
+  loadingButton();
+
+  let owner = ownerCheck();
+  console.log(owner);
   if (owner === "yes") {
     owner = `<i class="fas fa-certificate"></i>`;
   } else {
@@ -56,16 +86,29 @@ tableBtn.addEventListener("click", () => {
     </tr>
   `;
     table.innerHTML += template;
+
+    tableBtn.innerHTML = "Add";
+    loadingButton();
   }, 1000);
 
   //clear inpurt
   stockInput.value = "";
-  clearRadio(ownerInput);
   clearRadio(sentimentInput);
   commentInput.value = "";
 });
 
 // ----------------------------------------------------------------------- functions ------------------------------------------>>>>
+
+//owner check
+function ownerCheck() {
+  if (ownerYes.children[1].classList.contains("checked")) {
+    ownerYes.children[1].classList.remove("checked");
+    return "yes";
+  } else {
+    ownerNo.children[1].classList.remove("checked");
+    return "no";
+  }
+}
 
 // get correct radio results from form
 function radioCheck(myForm) {
@@ -114,18 +157,7 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-//   let total;
-
-//   console.log("entered");
-
-//   return new Promise(function (resolve, reject) {
-//     request(
-//       `https://cloud.iexapis.com/v1/stock/${stock}/price?token=pk_12493ac929dc4aca8b9ca87d35fefc39`,
-//       function (error, response, body) {
-//         total = body;
-
-//         resolve(total);
-//       }
-//     );
-//   });
-// }
+//loading button
+function loadingButton() {
+  tableBtn.classList.toggle("loading");
+}

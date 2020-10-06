@@ -87,18 +87,42 @@
           <input type="text" id="comment" maxlength="280">
           <!-- sentiment -->
           <h2>Sentiment</h2>
-          <input type="radio" name="sentiment" id="bull" value="bull" class="sentiment-radio">
-          <label for="bull">Bull</label>
-          <input type="radio" name="sentiment" id="bear" value="bear" class="sentiment-radio"> 
-          <label for="bear">Bear</label>
-          <input type="radio" name="sentiment" id="neutral" value="neutral" class="sentiment-radio">
-          <label for="neutral">Neutral</label>
+          <label class="radio">
+            <input type="radio" name="sentiment">
+            <span class="radio-control bullBtn"></span>
+          <span class="radio-label">Bull</span>
+        </label>
+          <label class="radio">
+            <input type="radio" name="sentiment">
+            <span class="radio-control bearBtn"></span>
+          <span class="radio-label">Bear</span>
+        </label>
+          <label class="radio">
+            <input type="radio" name="sentiment">
+            <span class="radio-control neutralBtn"></span>
+          <span class="radio-label">Neutral</span>
+        </label>
+
           <!-- ownership -->
           <h2>Ownership</h2>
-          <input type="radio" id="yes" name="ownership" value="yes" class="ownerform"/>
+          <span class="ownership">
+          <label class="radio yes">
+              <input type="radio" name="ownership">
+              <span class="radio-control yes"></span>
+            <span class="radio-label">Yes</span>
+          </label>
+          <label class="radio no">
+              <input type="radio" name="ownership">
+              <span class="radio-control"></span>
+            <span class="radio-label">No</span>
+          </label>
+        </span>
+          
+
+          <!-- <input type="radio" id="yes" name="ownership" value="yes" class="ownerform"/>
           <label for="yes">Yes</label>
           <input type="radio" id="no" name="ownership" value="no" class="ownerform"/>
-          <label for="no">No</label>
+          <label for="no">No</label> -->
         </div>
           <div class="center-stock">
             <!-- might need tot change this to button and not submit -->
