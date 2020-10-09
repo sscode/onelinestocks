@@ -6,32 +6,35 @@ const myKey = config.api;
 const table = document.querySelector(".table-data");
 const tableBtn = document.querySelector(".stock-button");
 
-const ownership = document.querySelector(".ownership");
-const ownerYes = document.querySelector(".yes");
-const ownerNo = document.querySelector(".no");
+const ownership = document.querySelectorAll(".ownerInput");
+
 const bear = document.querySelector(".bearBtn");
 const sentimentInput = document.querySelectorAll(".sentiment-radio");
 const stockInput = document.querySelector("#stick");
 const commentInput = document.querySelector("#comment");
 
-//set ownership -- I'm sure this could be consolidated
-ownerYes.addEventListener("click", () => {
-  ownerYes.children[1].classList.add("checked");
-  ownerNo.children[1].classList.remove("checked");
-});
-ownerNo.addEventListener("click", () => {
-  ownerNo.children[1].classList.add("checked");
-  ownerYes.children[1].classList.remove("checked");
-});
-
-let ownerChoice = Array.from(ownership.children);
-ownerChoice.forEach((choice) => {
+//set ownership
+ownership.forEach((choice) => {
+  choice.addEventListener("click", handleClick);
   console.log(choice);
 });
 
-ownership.addEventListener("click", function (event) {
-  console.log(event.target);
-});
+function handleClick(event) {
+  ownerCheck(event.target);
+}
+
+//owner check
+function ownerCheck(classes) {
+  ownership.forEach((choice) => {
+    choice.classList.remove("checked");
+  });
+  classes.classList.add("checked");
+}
+
+// ownership.addEventListener("click", function (event) {
+//   event.target.classList.add("test");
+//   console.log(event.target);
+// });
 
 bear.addEventListener("click", () => {
   console.log(bear);
@@ -98,17 +101,6 @@ tableBtn.addEventListener("click", () => {
 });
 
 // ----------------------------------------------------------------------- functions ------------------------------------------>>>>
-
-//owner check
-function ownerCheck() {
-  if (ownerYes.children[1].classList.contains("checked")) {
-    ownerYes.children[1].classList.remove("checked");
-    return "yes";
-  } else {
-    ownerNo.children[1].classList.remove("checked");
-    return "no";
-  }
-}
 
 // get correct radio results from form
 function radioCheck(myForm) {
