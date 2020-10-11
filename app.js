@@ -6,55 +6,51 @@ const myKey = config.api;
 const table = document.querySelector(".table-data");
 const tableBtn = document.querySelector(".stock-button");
 
-const ownership = document.querySelectorAll(".ownerInput");
+const sentimentInput = document.querySelectorAll(".sentimentInput");
 
-const bear = document.querySelector(".bearBtn");
-const sentimentInput = document.querySelectorAll(".sentiment-radio");
 const stockInput = document.querySelector("#stick");
 const commentInput = document.querySelector("#comment");
 
+const ownership = document.querySelectorAll(".ownerInput");
 //set ownership
+let owner;
+let sentiment;
+
 ownership.forEach((choice) => {
-  choice.addEventListener("click", handleClick);
-  console.log(choice);
+  choice.addEventListener("click", handleOwner);
 });
 
-function handleClick(event) {
-  ownerCheck(event.target);
-}
-
-//owner check
-function ownerCheck(classes) {
+function handleOwner(event) {
   ownership.forEach((choice) => {
     choice.classList.remove("checked");
   });
-  classes.classList.add("checked");
+  event.target.classList.add("checked");
+  owner = event.target.classList.contains("yes");
 }
 
-// ownership.addEventListener("click", function (event) {
-//   event.target.classList.add("test");
-//   console.log(event.target);
-// });
-
-bear.addEventListener("click", () => {
-  console.log(bear);
-  bear.classList.add("checked");
+sentimentInput.forEach((choice) => {
+  choice.addEventListener("click", handleSentiment);
 });
+
+function handleSentiment(event) {
+  sentimentInput.forEach((choice) => {
+    choice.classList.remove("checked");
+  });
+  event.target.classList.add("checked");
+  sentiment = event.target.classList[1].slice(0, -3);
+}
 
 // ----------------------------------------------------------------------- add stock to table ------------------------------------------>>>>
 tableBtn.addEventListener("click", () => {
   tableBtn.innerHTML = "Loading";
   loadingButton();
 
-  let owner = ownerCheck();
-  console.log(owner);
-  if (owner === "yes") {
+  if (owner === true) {
     owner = `<i class="fas fa-certificate"></i>`;
   } else {
     owner = "";
   }
 
-  let sentiment = radioCheck(sentimentInput);
   let sentCapital = capitalizeFirstLetter(sentiment);
 
   let ticker = stockInput.value;
@@ -96,33 +92,12 @@ tableBtn.addEventListener("click", () => {
 
   //clear inpurt
   stockInput.value = "";
-  clearRadio(sentimentInput);
+  sentimentInput.forEach((choice) => choice.classList.remove("checked"));
+  ownership.forEach((choice) => choice.classList.remove("checked"));
   commentInput.value = "";
 });
 
 // ----------------------------------------------------------------------- functions ------------------------------------------>>>>
-
-// get correct radio results from form
-function radioCheck(myForm) {
-  let radio_value = "";
-  for (let i = 0; i < myForm.length; i++) {
-    if (myForm[i].checked) {
-      radio_value = myForm[i].value;
-      break;
-    }
-  }
-  return radio_value;
-}
-
-//clear radio
-function clearRadio(myForm) {
-  for (let i = 0; i < myForm.length; i++) {
-    if (myForm[i].checked) {
-      myForm[i].checked = false;
-      break;
-    }
-  }
-}
 
 // get stock price
 function fetchPrice(stock, callback) {
